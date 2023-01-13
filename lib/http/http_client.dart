@@ -10,6 +10,8 @@ import 'package:dio/dio.dart';
 import 'http_config.dart';
 import 'model/response.dart';
 
+export 'package:dio/dio.dart';
+
 part 'extension/dio_client_extension.dart';
 
 class DioClient {

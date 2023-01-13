@@ -29,3 +29,17 @@ class HttpResponse<T> {
 
   Map<String, dynamic> toJson() => {'code': code, 'data': data, 'msg': msg};
 }
+
+extension HttpResponseExt<T> on HttpResponse<T> {
+  doFunc(
+      {required Function(T? data) success,
+      Function(int code, String msg)? failure,
+      Function(bool ok)? finalFunc}) {
+    if (ok) {
+      success(data);
+    } else {
+      failure?.call(code, msg);
+    }
+    finalFunc?.call(ok);
+  }
+}
